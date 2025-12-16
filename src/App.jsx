@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     Clock, MapPin, Utensils, AlertTriangle, Ship, Train, Car, Bus,
-    Info, Plane, Camera, Coffee, ArrowRight, ExternalLink, Map, Footprints, Heart, Briefcase
+    Info, Plane, Camera, Coffee, ArrowRight, ExternalLink, Map, Footprints, Heart, Briefcase, Fuel
 } from 'lucide-react';
 
 const App = () => {
@@ -138,7 +138,9 @@ const App = () => {
                     time: "11:15",
                     icon: <MapPin className="w-4 h-4" />,
                     content: "抵達倉敷美觀地區",
-                    note: "大原美術館今日休館 (週一)"
+                    note: "大原美術館今日休館 (週一)",
+                    isSpot: true,
+                    query: "Kurashiki Bikan Historical Quarter"
                 },
                 {
                     time: "12:00",
@@ -147,7 +149,7 @@ const App = () => {
                     isFood: true,
                     foodNote: "在地排隊名店，必吃「醬汁豬排丼」(Demikatsudon)。"
                 },
-                { time: "13:30", icon: <Camera className="w-4 h-4" />, content: "倉敷散策", note: "倉敷川遊船、常春藤廣場、林源十郎商店" },
+                { time: "13:30", icon: <Camera className="w-4 h-4" />, content: "倉敷散策", note: "倉敷川遊船、常春藤廣場、林源十郎商店", isSpot: true, query: "Kurashiki Bikan Historical Quarter" },
                 {
                     time: "15:00",
                     icon: <Coffee className="w-4 h-4 text-orange-500" />,
@@ -214,7 +216,9 @@ const App = () => {
                     time: "10:45",
                     icon: <MapPin className="w-4 h-4 text-red-600" />,
                     content: "【預約】地中美術館",
-                    warning: "極度重要：請控制參觀時間，務必於 11:40 前離開展館，否則趕不上下一站。"
+                    warning: "極度重要：請控制參觀時間，務必於 11:40 前離開展館，否則趕不上下一站。",
+                    isSpot: true,
+                    query: "Chichu Art Museum"
                 },
                 {
                     time: "11:45",
@@ -223,13 +227,15 @@ const App = () => {
                     note: "步行下坡前往 Benesse House Park，腳程需快！",
                     isCritical: true
                 },
-                { time: "12:00", icon: <MapPin className="w-4 h-4" />, content: "【預約】杉本博司・時間的迴廊", note: "地點：Benesse House Park" },
+                { time: "12:00", icon: <MapPin className="w-4 h-4" />, content: "【預約】杉本博司・時間的迴廊", note: "地點：Benesse House Park", isSpot: true, query: "Hiroshi Sugimoto Gallery: Time Corridors" },
                 {
                     time: "12:30",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
                     content: "午餐 & 黃南瓜拍照",
                     isFood: true,
-                    foodNote: "Museum Cafe 或戶外餐車。別忘了跟海邊黃南瓜合照。"
+                    foodNote: "Museum Cafe 或戶外餐車。別忘了跟海邊黃南瓜合照。",
+                    isSpot: true,
+                    query: "Yellow Pumpkin Naoshima"
                 },
                 {
                     time: "14:00",
@@ -237,9 +243,9 @@ const App = () => {
                     content: "移動至本村地區 (家計畫)",
                     note: "🚌 方案A：走回「つつじ荘」搭乘町營巴士至「農協前」(約10分，需投幣100円)。\n🚶 方案B：散步前往 (約25-30分)，沿途有起伏但風景優美。"
                 },
-                { time: "14:35", icon: <MapPin className="w-4 h-4" />, content: "【預約】家計畫・南寺", warning: "請務必提前 10 分鐘抵達集合點，逾時不候。" },
-                { time: "15:15", icon: <Camera className="w-4 h-4" />, content: "本村漫步", note: "角屋、護王神社，或去吃 Maimai 直島漢堡" },
-                { time: "17:00", icon: <MapPin className="w-4 h-4" />, content: "直島錢湯 I ♥ 湯", note: "藝術澡堂體驗" },
+                { time: "14:35", icon: <MapPin className="w-4 h-4" />, content: "【預約】家計畫・南寺", warning: "請務必提前 10 分鐘抵達集合點，逾時不候。", isSpot: true, query: "Art House Project Minamidera" },
+                { time: "15:15", icon: <Camera className="w-4 h-4" />, content: "本村漫步", note: "角屋、護王神社，或去吃 Maimai 直島漢堡", isSpot: true, query: "Honmura Naoshima" },
+                { time: "17:00", icon: <MapPin className="w-4 h-4" />, content: "直島錢湯 I ♥ 湯", note: "藝術澡堂體驗", isSpot: true, query: "Naoshima Bath I Love Yu" },
                 {
                     time: "18:30",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
@@ -311,8 +317,8 @@ const App = () => {
                     content: "步行前往美術館 (取代巴士)",
                     note: "不需要空等巴士。沿著藍色指示線走上坡，沿途是美麗梯田與海景，約 15-20 分鐘。"
                 },
-                { time: "09:50", icon: <Camera className="w-4 h-4" />, content: "梯田展望台 / 拍照", note: "在美術館前的彎道拍最經典的公路海景照。" },
-                { time: "10:45", icon: <MapPin className="w-4 h-4" />, content: "【預約】豐島美術館", note: "感受完後，沿著步道往下走。" },
+                { time: "09:50", icon: <Camera className="w-4 h-4" />, content: "梯田展望台 / 拍照", note: "在美術館前的彎道拍最經典的公路海景照。", isSpot: true, query: "Teshima Rice Terrace" },
+                { time: "10:45", icon: <MapPin className="w-4 h-4" />, content: "【預約】豐島美術館", note: "感受完後，沿著步道往下走。", isSpot: true, query: "Teshima Art Museum" },
                 {
                     time: "12:15",
                     icon: <Footprints className="w-4 h-4" />,
@@ -327,7 +333,7 @@ const App = () => {
                     foodNote: "享用預約好的午餐。",
                 },
                 { time: "13:40", icon: <Footprints className="w-4 h-4" />, content: "前往心臟音資料館", note: "吃完午餐後步行前往海邊 (約 10 分鐘)。" },
-                { time: "14:00", icon: <Heart className="w-4 h-4" />, content: "心臟音資料館", note: "建議停留 20-30 分鐘。" },
+                { time: "14:00", icon: <Heart className="w-4 h-4" />, content: "心臟音資料館", note: "建議停留 20-30 分鐘。", isSpot: true, query: "Les Archives du Cœur" },
                 {
                     time: "14:30",
                     icon: <Bus className="w-4 h-4" />,
@@ -339,7 +345,9 @@ const App = () => {
                     time: "14:50",
                     icon: <MapPin className="w-4 h-4" />,
                     content: "抵達 家浦港 & (彈性) 橫尾館",
-                    note: "只有約 25 分鐘。建議只參觀外觀或逛紀念品店，除非提早到達。"
+                    note: "只有約 25 分鐘。建議只參觀外觀或逛紀念品店，除非提早到達。",
+                    isSpot: true,
+                    query: "Teshima Yokoo House"
                 },
                 {
                     time: "15:25",
@@ -407,34 +415,57 @@ const App = () => {
             highlight: "爬階梯 & 烏龍麵名店",
             color: "rose",
             details: [
-                { time: "08:00", icon: <Car className="w-4 h-4" />, content: "飯店 Check-out，開車出發" },
-                { time: "09:00", icon: <MapPin className="w-4 h-4" />, content: "金刀比羅宮", note: "挑戰 785 階梯 (甚至 1368 階)。" },
+                { time: "08:00", icon: <Car className="w-4 h-4" />, content: "高松市區出發", note: "開車前往金刀比羅宮（約50-60分鐘）。" },
+                { time: "09:00", icon: <MapPin className="w-4 h-4" />, content: "抵達金刀比羅宮", note: "停好車，開始爬階梯。", isSpot: true, query: "Kotohira-gu" },
                 {
-                    time: "12:00",
-                    icon: <Utensils className="w-4 h-4 text-orange-500" />,
-                    content: "午餐：參道烏龍麵",
-                    isFood: true,
-                    foodNote: "金比羅烏龍麵 或 附近小吃。"
-                },
-                { time: "13:00", icon: <MapPin className="w-4 h-4" />, content: "四國水族館", note: "位於宇多津，夢幻的瀨戶內海背景水族箱" },
-                {
-                    time: "14:30",
-                    icon: <Utensils className="w-4 h-4 text-orange-500" />,
-                    content: "壓軸美食：手打烏龍麵 おか泉",
-                    isFood: true,
-                    foodNote: "必點：冷天婦羅烏龍麵 (Hiyaten Oroshi)。",
-                    warning: "注意！為了趕飛機，建議比原計畫提早一小時來吃。"
+                    time: "09:00",
+                    icon: <Footprints className="w-4 h-4" />,
+                    content: "金刀比羅宮參拜",
+                    note: "上山約40-50分，參拜20分，下山30分。"
                 },
                 {
-                    time: "15:30",
+                    time: "10:30",
+                    icon: <Utensils className="w-4 h-4 text-orange-500" />,
+                    content: "午餐：表參道讚岐烏龍麵",
+                    isFood: true,
+                    foodNote: "推薦：中野烏龍麵學校 或 琴平烏龍麵。",
+                    isSpot: true,
+                    query: "Nakano Udon School Kotohira"
+                },
+                { time: "11:30", icon: <Car className="w-4 h-4" />, content: "開車前往水族館", note: "車程約 30-40 分鐘。" },
+                { time: "12:10", icon: <MapPin className="w-4 h-4" />, content: "抵達四國水族館", note: "位於宇多津，就在海邊。", isSpot: true, query: "Shikoku Aquarium" },
+                {
+                    time: "13:00",
+                    icon: <Camera className="w-4 h-4 text-blue-500" />,
+                    content: "【必看】海豚秀",
+                    note: "以瀨戶內海為背景，館內不大，1.5-2小時足夠。"
+                },
+                {
+                    time: "14:15",
                     icon: <Car className="w-4 h-4 text-red-600" />,
-                    content: "開車前往高松機場 & 還車",
-                    warning: "非常重要：因應 18:00 班機，強烈建議 15:30~16:00 抵達還車處。16:30 可能太趕！",
+                    content: "離開水族館 (關鍵!)",
+                    warning: "開車前往高松機場（約45-50分鐘）。",
                     isCritical: true
                 },
+                {
+                    time: "15:05",
+                    icon: <Fuel className="w-4 h-4" />,
+                    content: "抵達機場附近加油",
+                    note: "日本還車通常需「滿油歸還」。"
+                },
+                { time: "15:20", icon: <Briefcase className="w-4 h-4" />, content: "抵達還車點", note: "辦理手續，搭接駁車至航廈。" },
+                { time: "15:30", icon: <MapPin className="w-4 h-4" />, content: "完成還車", note: "順利結束。" },
                 { time: "18:00", icon: <Plane className="w-4 h-4" />, content: "航班起飛 (TAK -> TPE)", note: "滿載回憶，平安回家" }
             ],
             foodGuide: [
+                {
+                    name: "中野烏龍麵學校 (Nakano Udon)",
+                    type: "烏龍麵/體驗",
+                    tags: ["午餐", "體驗"],
+                    desc: "參道商店街上的名店，可以體驗親手製作烏龍麵。",
+                    location: "金刀比羅宮參道",
+                    query: "Nakano Udon School Kotohira"
+                },
                 {
                     name: "金比羅烏龍麵 本店 (Konpira Udon)",
                     type: "烏龍麵",
@@ -616,8 +647,12 @@ const App = () => {
                                             )}
                                         </div>
 
-                                        <h3 className={`text-base font-bold mt-1 ${item.isFood ? 'text-gray-900' : 'text-gray-800'}`}>
+                                        <h3
+                                            className={`text-base font-bold mt-1 ${item.isFood ? 'text-gray-900' : 'text-gray-800'} ${item.isSpot ? 'cursor-pointer hover:text-blue-600 transition-colors' : ''}`}
+                                            onClick={() => item.isSpot && openMap(item.query || item.content)}
+                                        >
                                             {item.content}
+                                            {item.isSpot && <ExternalLink className="inline-block w-3 h-3 ml-1 text-gray-400" />}
                                         </h3>
 
                                         {/* Food Highlight Box */}
