@@ -241,25 +241,31 @@ const App = () => {
                     note: "四國汽船 (渡輪) 前往宮浦港。"
                 },
                 {
-                    time: "10:02",
+                    time: "09:42",
                     icon: <MapPin className="w-4 h-4" />,
-                    content: "抵達 宮浦港 (關鍵轉乘)",
-                    warning: "下船後立刻去搭 10:08 的町營巴士 (往つつじ荘)。",
+                    content: "抵達 宮浦港 (極速轉乘)",
+                    warning: "下船後快步走！搭乘 09:45 的町營巴士 (往つつじ荘)。",
                     isCritical: true,
                     isSpot: true,
                     query: "Miyanoura Port Naoshima"
                 },
                 {
-                    time: "10:30",
+                    time: "09:58",
                     icon: <Bus className="w-4 h-4" />,
-                    content: "轉乘 倍樂生場內接駁車",
-                    note: "在「つつじ荘」下車(10:24)，原地轉乘接駁車(10:30發)。"
+                    content: "抵達 杜鵑莊 (Tsutsuji-so)",
+                    note: "換乘前方免費的博物館接駁巴士。"
                 },
                 {
-                    time: "10:35",
+                    time: "10:05",
+                    icon: <Bus className="w-4 h-4" />,
+                    content: "博物館接駁車 發車",
+                    note: "直接坐到終點站 (地中美術館)。"
+                },
+                {
+                    time: "10:12",
                     icon: <MapPin className="w-4 h-4 text-red-600" />,
                     content: "抵達 地中美術館",
-                    note: "趁預約時間 (10:45) 前從容換票。",
+                    note: "時間充裕，可以悠閒換票入場 (預約 10:45)。",
                     isSpot: true,
                     query: "Chichu Art Museum"
                 },
