@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     Clock, MapPin, Utensils, AlertTriangle, Ship, Train, Car, Bus,
-    Info, Plane, Camera, Coffee, ArrowRight, ExternalLink, Map, Footprints, Heart, Briefcase, Fuel
+    Info, Plane, Camera, Coffee, ArrowRight, ExternalLink, Map, Footprints, Heart, Briefcase, Fuel, Ticket
 } from 'lucide-react';
 
 const App = () => {
@@ -125,79 +125,102 @@ const App = () => {
         {
             day: 2,
             date: "12/22 (Mon)",
-            title: "倉敷美學 & 宇野移動",
-            location: "倉敷 / 宇野",
+            title: "豐島藝術 & 心臟音",
+            location: "豐島 (Teshima)",
             stay: "HYM Hostel (宇野)",
-            highlight: "美觀地區散策 & 水果聖代",
-            color: "indigo",
+            highlight: "豐島美術館 & 心臟音",
+            color: "emerald",
             details: [
-                { time: "08:30", icon: <ArrowRight className="w-4 h-4" />, content: "飯店 Check-out，前往宇野", note: "建議搭乘 JR Marine Liner (需轉車) 或 渡輪(直達)" },
-                { time: "10:00", icon: <MapPin className="w-4 h-4" />, content: "抵達宇野，寄放行李於 HYM Hostel" },
-                { time: "10:30", icon: <Train className="w-4 h-4" />, content: "搭乘 JR 宇野線前往倉敷", warning: "注意班次銜接，平日班次可能較少" },
+                { time: "09:07", icon: <Ship className="w-4 h-4" />, content: "高松港 出發", note: "豐島渡輪 (高速船) 前往家浦港。" },
+                { time: "09:57", icon: <MapPin className="w-4 h-4" />, content: "抵達 家浦港", note: "【極速 8 分鐘】下船 → 衝去交流中心寄行李 → 10:05 上巴士。", isSpot: true, query: "Ieura Port Teshima" },
+                { time: "10:05", icon: <Bus className="w-4 h-4" />, content: "家浦港 搭巴士", note: "往「唐櫃港」方向。" },
+                { time: "10:19", icon: <Camera className="w-4 h-4" />, content: "抵達 美術館前", note: "下車後沿著海景步道走下去，這是必拍景點。", isSpot: true, query: "Teshima Rice Terrace" },
                 {
-                    time: "11:15",
+                    time: "10:30",
                     icon: <MapPin className="w-4 h-4" />,
-                    content: "抵達倉敷美觀地區",
-                    note: "大原美術館今日休館 (週一)",
+                    content: "【預約】豐島美術館",
+                    note: "這是豐島的精華，請慢慢感受水滴與回音。累了可以先在美術館 Cafe 喝杯咖啡。",
                     isSpot: true,
-                    query: "Kurashiki Bikan Historical Quarter"
+                    query: "Teshima Art Museum"
                 },
+                { time: "12:40", icon: <Footprints className="w-4 h-4" />, content: "步行前往午餐", note: "往下坡走約 15 分鐘，進入唐櫃村落。" },
                 {
-                    time: "12:00",
+                    time: "13:00",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
-                    content: "午餐：名代豬排 Kappa",
+                    content: "午餐：島廚房 (Shima Kitchen)",
                     isFood: true,
-                    foodNote: "在地排隊名店，必吃「醬汁豬排丼」(Demikatsudon)。"
+                    foodNote: "好好享受這頓午餐，通常用餐時間約 50-60 分鐘。這裡的氣氛很舒服。",
+                    isSpot: true,
+                    query: "Shima Kitchen Teshima"
                 },
-                { time: "13:30", icon: <Camera className="w-4 h-4" />, content: "倉敷散策", note: "倉敷川遊船、常春藤廣場、林源十郎商店", isSpot: true, query: "Kurashiki Bikan Historical Quarter" },
+                { time: "14:00", icon: <Footprints className="w-4 h-4" />, content: "散步往海邊", note: "穿過唐櫃的村落小徑，約 15 分鐘路程。沿路會經過檸檬田和安靜的民家。" },
                 {
-                    time: "15:00",
+                    time: "14:15",
+                    icon: <Heart className="w-4 h-4" />,
+                    content: "心臟音資料館",
+                    note: "聽聽心跳聲，也可以走到外面的沙灘看海。這裡非常療癒，值得多待一下。",
+                    isSpot: true,
+                    query: "Les Archives du Cœur"
+                },
+                { time: "14:55", icon: <Footprints className="w-4 h-4" />, content: "慢慢走回唐櫃港", note: "從心臟音走回「唐櫃港」巴士站約需 12-15 分鐘。沿著海堤走，風景很美。" },
+                {
+                    time: "15:10",
+                    icon: <Camera className="w-4 h-4" />,
+                    content: "唐櫃港周邊 & 籃框",
+                    note: "巴士站旁就是「無人勝出 - 多重籃框」。可以在這裡拍照、投籃。",
+                    isSpot: true,
+                    query: "No One Wins - Multibasket"
+                },
+                {
+                    time: "15:33",
+                    icon: <Bus className="w-4 h-4" />,
+                    content: "唐櫃港 搭巴士 (關鍵!)",
+                    warning: "上車投幣 200 円。這班車是從這裡發車，通常會有位子坐。",
+                    isCritical: true
+                },
+                { time: "15:52", icon: <Briefcase className="w-4 h-4" />, content: "抵達 家浦港", note: "取回行李去交流中心領行李、上廁所。" },
+                {
+                    time: "16:00",
                     icon: <Coffee className="w-4 h-4 text-orange-500" />,
-                    content: "下午茶：倉敷桃子 (Kurashiki Momoko)",
-                    isFood: true,
-                    foodNote: "岡山是水果王國，必點當季豪華水果聖代。"
+                    content: "最後休息",
+                    note: "Teshima Factory 就在附近；或者直接在港口候船室看海。",
+                    isSpot: true,
+                    query: "Teshima Factory"
                 },
-                { time: "17:00", icon: <Train className="w-4 h-4" />, content: "搭乘 JR 返回宇野" },
-                {
-                    time: "18:00",
-                    icon: <Utensils className="w-4 h-4 text-orange-500" />,
-                    content: "晚餐：宇野在地味",
-                    isFood: true,
-                    foodNote: "大阪屋 (澎湃魚定食) 或 #8 WIRE (職人漢堡)。"
-                }
+                { time: "16:25", icon: <Ship className="w-4 h-4" />, content: "家浦港 出發", note: "小豆島豐島渡輪 (旅客船) 前往宇野港。" }
             ],
             foodGuide: [
                 {
-                    name: "三宅商店 (Miyake Shoten)",
-                    type: "咖啡/咖哩",
-                    tags: ["午餐", "氣氛佳"],
-                    desc: "美觀地區百年古民家，招牌是「玄米咖哩飯」和季節聖代，排不到豬排就來這。",
-                    location: "倉敷美觀地區",
-                    query: "Miyake Shoten Kurashiki"
+                    name: "海之餐廳 (Umi no Restaurant)",
+                    type: "義式/Pizza",
+                    tags: ["午餐", "家浦"],
+                    desc: "家浦港附近擁有無敵海景的戶外座位，提供窯烤Pizza和義大利麵。",
+                    location: "家浦港 (騎車約5分)",
+                    query: "Umi no Restaurant Teshima"
                 },
                 {
-                    name: "龜遊亭 (Kiyutei)",
-                    type: "洋食/牛排",
-                    tags: ["午餐", "優雅"],
-                    desc: "位於大原美術館旁，明治時代建築，提供精緻的牛排與洋食。",
-                    location: "倉敷美觀地區",
-                    query: "Kiyutei Kurashiki"
+                    name: "Teshima no Mado (てしまのまど)",
+                    type: "咖啡/簡餐",
+                    tags: ["午餐", "家浦"],
+                    desc: "古民家改建的咖啡廳，提供溫馨的午餐定食。",
+                    location: "家浦港步行圈",
+                    query: "Teshima no Mado"
+                },
+                {
+                    name: "草莓家 (Ichigoya)",
+                    type: "甜點/可麗餅",
+                    tags: ["甜點", "家浦"],
+                    desc: "使用豐島盛產的草莓製作的可麗餅，非常適合作為散步甜點。",
+                    location: "家浦港附近",
+                    query: "Ichigoya Teshima"
                 },
                 {
                     name: "魚富 (Uosou)",
                     type: "壽司/海鮮",
-                    tags: ["晚餐", "在地人推薦"],
-                    desc: "宇野港附近的老字號壽司店，魚獲新鮮，價格實在。",
+                    tags: ["晚餐", "宇野"],
+                    desc: "抵達宇野後，港口附近的老字號壽司店。",
                     location: "宇野港步行圈",
                     query: "Uosou Uno Port"
-                },
-                {
-                    name: "瀨戶內溫泉 玉之湯 (餐廳)",
-                    type: "日式定食",
-                    tags: ["晚餐", "景觀"],
-                    desc: "不想煩惱吃什麼就來這，泡完溫泉直接在館內餐廳用餐，有寬敞的海景。",
-                    location: "宇野港旁",
-                    query: "Setouchi Onsen Tamanoyu"
                 }
             ]
         },
@@ -210,42 +233,80 @@ const App = () => {
             highlight: "地中美術館 & 黃南瓜",
             color: "teal",
             details: [
-                { time: "09:20", icon: <Ship className="w-4 h-4" />, content: "宇野港搭船前往直島 (宮浦港)" },
-                { time: "09:50", icon: <Car className="w-4 h-4" />, content: "轉乘巴士前往地中美術館", note: "在「つつじ荘」換乘接駁車" },
                 {
-                    time: "10:45",
+                    time: "09:22",
+                    icon: <Ship className="w-4 h-4" />,
+                    content: "宇野港 出發 (往直島)",
+                    alert: "09:20 沒船，請務必搭上 09:22 這班！",
+                    note: "四國汽船 (渡輪) 前往宮浦港。"
+                },
+                {
+                    time: "10:02",
+                    icon: <MapPin className="w-4 h-4" />,
+                    content: "抵達 宮浦港 (關鍵轉乘)",
+                    warning: "下船後立刻去搭 10:08 的町營巴士 (往つつじ荘)。",
+                    isCritical: true,
+                    isSpot: true,
+                    query: "Miyanoura Port Naoshima"
+                },
+                {
+                    time: "10:30",
+                    icon: <Bus className="w-4 h-4" />,
+                    content: "轉乘 倍樂生場內接駁車",
+                    note: "在「つつじ荘」下車(10:24)，原地轉乘接駁車(10:30發)。"
+                },
+                {
+                    time: "10:35",
                     icon: <MapPin className="w-4 h-4 text-red-600" />,
-                    content: "【預約】地中美術館",
-                    warning: "極度重要：請控制參觀時間，務必於 11:40 前離開展館，否則趕不上下一站。",
+                    content: "抵達 地中美術館",
+                    note: "趁預約時間 (10:45) 前從容換票。",
                     isSpot: true,
                     query: "Chichu Art Museum"
                 },
                 {
-                    time: "11:45",
-                    icon: <Clock className="w-4 h-4 text-red-600" />,
-                    content: "【生死 15 分鐘】快速移動",
-                    note: "步行下坡前往 Benesse House Park，腳程需快！",
-                    isCritical: true
+                    time: "11:40",
+                    icon: <Footprints className="w-4 h-4" />,
+                    content: "步行前往 時間的迴廊",
+                    note: "沿途風景很美，下坡路約 15 分鐘，不用等接駁車。"
                 },
-                { time: "12:00", icon: <MapPin className="w-4 h-4" />, content: "【預約】杉本博司・時間的迴廊", note: "地點：Benesse House Park", isSpot: true, query: "Hiroshi Sugimoto Gallery: Time Corridors" },
+                { time: "11:55", icon: <MapPin className="w-4 h-4" />, content: "【預約】杉本博司・時間的迴廊", note: "地點：Benesse House Park。", isSpot: true, query: "Hiroshi Sugimoto Gallery: Time Corridors" },
                 {
                     time: "12:30",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
                     content: "午餐 & 黃南瓜拍照",
                     isFood: true,
-                    foodNote: "Museum Cafe 或戶外餐車。別忘了跟海邊黃南瓜合照。",
+                    foodNote: "就在時間的迴廊前方海灘(走路3分)。該區餐廳不多，建議自備輕食。",
                     isSpot: true,
                     query: "Yellow Pumpkin Naoshima"
                 },
                 {
-                    time: "14:00",
-                    icon: <ArrowRight className="w-4 h-4" />,
-                    content: "移動至本村地區 (家計畫)",
-                    note: "🚌 方案A：走回「つつじ荘」搭乘町營巴士至「農協前」(約10分，需投幣100円)。\n🚶 方案B：散步前往 (約25-30分)，沿途有起伏但風景優美。"
+                    time: "13:54",
+                    icon: <Bus className="w-4 h-4" />,
+                    content: "搭巴士前往 本村 (關鍵時刻)",
+                    warning: "最完美的班次！於「つつじ荘」搭乘町營巴士前往「農協前」。",
+                    isCritical: true
                 },
-                { time: "14:35", icon: <MapPin className="w-4 h-4" />, content: "【預約】家計畫・南寺", warning: "請務必提前 10 分鐘抵達集合點，逾時不候。", isSpot: true, query: "Art House Project Minamidera" },
-                { time: "15:15", icon: <Camera className="w-4 h-4" />, content: "本村漫步", note: "角屋、護王神社，或去吃 Maimai 直島漢堡", isSpot: true, query: "Honmura Naoshima" },
-                { time: "17:00", icon: <MapPin className="w-4 h-4" />, content: "直島錢湯 I ♥ 湯", note: "藝術澡堂體驗", isSpot: true, query: "Naoshima Bath I Love Yu" },
+                {
+                    time: "14:00",
+                    icon: <MapPin className="w-4 h-4" />,
+                    content: "抵達 農協前 (本村)",
+                    note: "下車後步行 5 分鐘即達南寺。"
+                },
+                { time: "14:25", icon: <MapPin className="w-4 h-4" />, content: "【預約】家計畫・南寺", warning: "請務必提前抵達報到，逾時不候。", isSpot: true, query: "Art House Project Minamidera" },
+                { time: "15:15", icon: <Camera className="w-4 h-4" />, content: "本村漫步", note: "角屋、護王神社，或去吃 Maimai 直島漢堡。", isSpot: true, query: "Honmura Naoshima" },
+                {
+                    time: "16:36",
+                    icon: <Bus className="w-4 h-4" />,
+                    content: "搭巴士回宮浦港",
+                    note: "在「農協前」上車，預計 16:42 抵達宮浦港。"
+                },
+                { width: "100%", time: "16:45", icon: <MapPin className="w-4 h-4" />, content: "宮浦港散策", note: "錢湯 I♥湯、Mikazuki Shoten 咖啡、紅南瓜合照。", isSpot: true, query: "Naoshima Bath I Love Yu" },
+                {
+                    time: "17:35",
+                    icon: <Ship className="w-4 h-4" />,
+                    content: "宮浦港 出發 (往宇野)",
+                    note: "搭乘四國汽船 (渡輪) 返回宇野 (17:55 抵達)。"
+                },
                 {
                     time: "18:30",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
@@ -292,117 +353,113 @@ const App = () => {
         {
             day: 4,
             date: "12/24 (Wed)",
-            title: "豐島秘境 & 聖誕晚餐",
-            location: "豐島 / 宇野 / 高松",
+            title: "倉敷美學 & 聖誕夜",
+            location: "倉敷 / 高松",
             stay: "JR Clement Inn Takamatsu",
-            highlight: "豐島美術館 & 趕路大作戰",
-            color: "emerald",
+            highlight: "倉敷運河遊船 & 聖誕晚餐",
+            color: "indigo",
             details: [
+                { time: "09:00", icon: <Briefcase className="w-4 h-4" />, content: "Check-out & 移動", note: "帶著行李前往 JR 宇野站。" },
+                { time: "09:12", icon: <Train className="w-4 h-4" />, content: "JR 宇野線 (經茶屋町轉車)", note: "前往 JR 倉敷站 (約 1 小時)。" },
+                { time: "10:10", icon: <Briefcase className="w-4 h-4" />, content: "抵達倉敷 & 寄放行李", note: "務必將大行李鎖在車站置物櫃。" },
+                { time: "10:30", icon: <MapPin className="w-4 h-4" />, content: "抵達 倉敷美觀地區", note: "步行約 10-15 分鐘。", isSpot: true, query: "Kurashiki Bikan Historical Quarter" },
                 {
-                    time: "08:00",
-                    icon: <Briefcase className="w-4 h-4" />,
-                    content: "Check-out & 行李寄放宇野",
-                    note: "退房後將行李鎖在宇野站/港口置物櫃，輕裝上島。"
+                    time: "10:40",
+                    icon: <Ticket className="w-4 h-4 text-red-600" />,
+                    content: "【關鍵】購買遊船票",
+                    warning: "地點：倉敷館觀光案內所。先買好下午的船票，很容易完售！",
+                    isCritical: true,
+                    isSpot: true,
+                    query: "Kurashiki Kan"
                 },
                 {
-                    time: "08:40",
-                    icon: <Ship className="w-4 h-4" />,
-                    content: "宇野港 出發 (往唐櫃)",
-                    note: "搭乘旅客船前往豐島 (唐櫃港)。"
-                },
-                { time: "09:20", icon: <MapPin className="w-4 h-4" />, content: "抵達 豐島 (唐櫃港)", note: "下船處即是唐櫃。" },
-                {
-                    time: "09:30",
-                    icon: <Footprints className="w-4 h-4" />,
-                    content: "步行前往美術館 (取代巴士)",
-                    note: "不需要空等巴士。沿著藍色指示線走上坡，沿途是美麗梯田與海景，約 15-20 分鐘。"
-                },
-                { time: "09:50", icon: <Camera className="w-4 h-4" />, content: "梯田展望台 / 拍照", note: "在美術館前的彎道拍最經典的公路海景照。", isSpot: true, query: "Teshima Rice Terrace" },
-                { time: "10:45", icon: <MapPin className="w-4 h-4" />, content: "【預約】豐島美術館", note: "感受完後，沿著步道往下走。", isSpot: true, query: "Teshima Art Museum" },
-                {
-                    time: "12:15",
-                    icon: <Footprints className="w-4 h-4" />,
-                    content: "步行下坡至唐櫃",
-                    note: "慢慢散步回到村落區。"
+                    time: "10:50",
+                    icon: <Camera className="w-4 h-4" />,
+                    content: "【藝術巡禮】大原美術館",
+                    note: "日本第一座私立西洋美術館，收藏莫內《睡蓮》。",
+                    isSpot: true,
+                    query: "Ohara Museum of Art"
                 },
                 {
-                    time: "12:30",
+                    time: "12:00",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
-                    content: "午餐：島廚房 (Shima Kitchen)",
+                    content: "午餐：名代豬排 Kappa",
                     isFood: true,
-                    foodNote: "享用預約好的午餐。",
+                    foodNote: "必吃淋上多蜜醬汁的炸豬排 (Demi-katsu)。",
+                    isSpot: true,
+                    query: "Kappa Tonkatsu Kurashiki"
                 },
-                { time: "13:40", icon: <Footprints className="w-4 h-4" />, content: "前往心臟音資料館", note: "吃完午餐後步行前往海邊 (約 10 分鐘)。" },
-                { time: "14:00", icon: <Heart className="w-4 h-4" />, content: "心臟音資料館", note: "建議停留 20-30 分鐘。", isSpot: true, query: "Les Archives du Cœur" },
+                {
+                    time: "13:00",
+                    icon: <Ship className="w-4 h-4" />,
+                    content: "【體驗】倉敷川遊船",
+                    note: "戴著斗笠坐在小船上，從河面視角欣賞白壁建築。",
+                    isSpot: true,
+                    query: "Kurashiki River Boat Tour"
+                },
+                {
+                    time: "13:30",
+                    icon: <Camera className="w-4 h-4" />,
+                    content: "常春藤廣場 (Ivy Square)",
+                    note: "紅磚建築與常春藤的對比，非常適合拍照。",
+                    isSpot: true,
+                    query: "Kurashiki Ivy Square"
+                },
                 {
                     time: "14:30",
-                    icon: <Bus className="w-4 h-4" />,
-                    content: "搭巴士前往家浦 (關鍵時刻)",
-                    warning: "務必搭上 14:30~14:40 經過唐櫃的巴士，若錯過走路回家浦要 50 分鐘會來不及。",
-                    isCritical: true
-                },
-                {
-                    time: "14:50",
-                    icon: <MapPin className="w-4 h-4" />,
-                    content: "抵達 家浦港 & (彈性) 橫尾館",
-                    note: "只有約 25 分鐘。建議只參觀外觀或逛紀念品店，除非提早到達。",
+                    icon: <Coffee className="w-4 h-4 text-orange-500" />,
+                    content: "下午茶：倉敷桃子 (Kurashiki Momoko)",
+                    isFood: true,
+                    foodNote: "或「有鄰庵」幸福布丁。",
                     isSpot: true,
-                    query: "Teshima Yokoo House"
+                    query: "Kurashiki Momoko Main Store"
                 },
-                {
-                    time: "15:25",
-                    icon: <Ship className="w-4 h-4" />,
-                    content: "豐島 (家浦) 出發 (絕對要搭上)",
-                    warning: "搭乘渡輪 (Ferry) 前往宇野港，船大且穩。",
-                    isCritical: true
-                },
-                { time: "16:05", icon: <MapPin className="w-4 h-4" />, content: "抵達 宇野港", note: "下船，快步走去宇野站 (約 5-7 分鐘)。" },
-                { time: "16:15", icon: <Briefcase className="w-4 h-4" />, content: "領取行李", note: "從置物櫃取出您的 29 吋行李。" },
-                { time: "16:42", icon: <Train className="w-4 h-4" />, content: "JR 宇野站 出發", note: "搭乘 JR 宇野線 (往茶屋町)。" },
-                { time: "17:05", icon: <Train className="w-4 h-4" />, content: "茶屋町站 轉車", note: "轉乘 JR Marine Liner (往高松)。" },
-                { time: "17:33", icon: <MapPin className="w-4 h-4" />, content: "抵達 JR 高松站", note: "大功告成！優雅地去租車。" },
-                { time: "18:00", icon: <Car className="w-4 h-4" />, content: "取車：平成租車 高松店" },
+                { time: "15:30", icon: <Footprints className="w-4 h-4" />, content: "逛回 JR 倉敷站", note: "順便逛逛車站旁的 Outlet (若有時間)。" },
+                { time: "16:15", icon: <Train className="w-4 h-4" />, content: "前往高松", note: "從 JR 倉敷站取回行李 -> 岡山 -> 高松。" },
+                { time: "17:15", icon: <MapPin className="w-4 h-4" />, content: "抵達 JR 高松站", note: "Check-in JR Clement Inn (車站對面)。" },
+                { time: "18:00", icon: <Car className="w-4 h-4" />, content: "平成租車 取車", note: "辦理手續、取車。將車停回飯店停車場。" },
                 {
                     time: "19:00",
                     icon: <Utensils className="w-4 h-4 text-orange-500" />,
-                    content: "聖誕大餐：蘭丸 (Ranmaru)",
+                    content: "聖誕晚餐：骨付鳥",
                     isFood: true,
-                    foodNote: "骨付鳥名店。聖誕夜務必預約！",
-                    note: "備案：寄鳥味鳥"
+                    foodNote: "蘭丸 (Ranmaru) 或 寄鳥味鳥，享受熱鬧氣氛。",
+                    isSpot: true,
+                    query: "Hone-Tsuki-Dori Ranmaru"
                 }
             ],
             foodGuide: [
                 {
-                    name: "海之餐廳 (Umi no Restaurant)",
-                    type: "義式/Pizza",
-                    tags: ["午餐", "景觀"],
-                    desc: "位於家浦港附近，擁有無敵海景的戶外座位，提供窯烤Pizza和義大利麵。",
-                    location: "家浦港 (騎車約5分)",
-                    query: "Umi no Restaurant Teshima"
+                    name: "三宅商店 (Miyake Shoten)",
+                    type: "咖啡/咖哩",
+                    tags: ["午餐", "備案"],
+                    desc: "美觀地區百年古民家，招牌是「玄米咖哩飯」。",
+                    location: "倉敷美觀地區",
+                    query: "Miyake Shoten Kurashiki"
                 },
                 {
-                    name: "Teshima no Mado (てしまのまど)",
-                    type: "咖啡/簡餐",
-                    tags: ["午餐", "溫馨"],
-                    desc: "古民家改建的咖啡廳，就在家浦港附近，提供溫馨的午餐定食。",
-                    location: "家浦港步行圈",
-                    query: "Teshima no Mado"
+                    name: "有鄰庵 (Yuurin-an)",
+                    type: "甜點/布丁",
+                    tags: ["下午茶", "限量"],
+                    desc: "就在美觀地區，限量的「幸福布丁」非常有名。",
+                    location: "倉敷美觀地區",
+                    query: "Yuurin-an Kurashiki"
+                },
+                {
+                    name: "寄鳥味鳥 (Yoridorimidori)",
+                    type: "骨付鳥",
+                    tags: ["晚餐", "高松"],
+                    desc: "如果蘭丸客滿，這家是很好的第二選擇。",
+                    location: "高松市區兵庫町",
+                    query: "Yoridorimidori Takamatsu"
                 },
                 {
                     name: "手打十段 烏龍麵笨蛋一代",
                     type: "烏龍麵",
-                    tags: ["早餐/午餐", "名店"],
-                    desc: "如果隔天早上有空，必吃這家的「奶油胡椒烏龍麵」(釜奶油)，高松排隊名店。",
-                    location: "高松市區 (開車/電車)",
-                    query: "Udon Baka Ichidai"
-                },
-                {
-                    name: "寄鳥味鳥 (Yoyoi)",
-                    type: "骨付鳥",
-                    tags: ["晚餐", "備案"],
-                    desc: "如果蘭丸客滿，這家是很好的第二選擇，同樣位於繁華街。",
+                    tags: ["早餐", "高松"],
+                    desc: "隔天早餐必吃「奶油胡椒烏龍麵」。",
                     location: "高松市區",
-                    query: "Yoyoi Takamatsu"
+                    query: "Udon Baka Ichidai"
                 }
             ]
         },
